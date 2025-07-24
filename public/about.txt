@@ -1,0 +1,3 @@
+
+- Font Source: http://fonts.gstatic.com/s/lekton/v17/SZc43FDmLaWmWpBeXxfonUPL6Q.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
