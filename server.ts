@@ -65,11 +65,11 @@ async function createServer(isProd = process.env.NODE_ENV === "production") {
 
   app.use("*", async (req: Request, res: Response, next: NextFunction) => {
     const url = req.originalUrl;
-
     try {
       const template = await vite.transformIndexHtml(url, baseTemplate);
 
       const appHtml = await render(url);
+
       const cssAssets = await stylesheets;
 
       const html = template

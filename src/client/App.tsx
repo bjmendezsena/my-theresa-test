@@ -1,12 +1,12 @@
-import React from "react";
-import Main from "./pages/Main";
-import { ContextWrapper } from "./Context";
+import { MainLayout } from "@/components";
+import { Router } from "@/routes";
+import "./index.scss";
 
 export const App = () => {
   return (
-    <ContextWrapper>
-      <Main />
-    </ContextWrapper>
+    <MainLayout>
+      <Router />
+    </MainLayout>
   );
 };
 

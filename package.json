@@ -1,7 +1,7 @@
 {
   "name": "my-theresa-test",
   "version": "1.0.0",
-  "description": "A test project for MyTheresa using Fastify and Vite",
+  "description": "A test project for MyTheresa using express and Vite",
   "type": "module",
   "homepage": "https://bjmendezsena.github.io/my-theresa-test",
   "scripts": {
@@ -21,13 +21,12 @@
     "format": "prettier --write src types"
   },
   "dependencies": {
-    "@fastify/static": "^6.12.0",
     "@types/serve-static": "^1.15.8",
     "autoprefixer": "^10.4.21",
     "compression": "^1.8.1",
     "cross-env": "^7.0.3",
     "express": "^4.21.2",
-    "fastify": "^4.29.1",
+    "postcss-nesting": "^13.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.7.0",
@@ -58,6 +57,8 @@
     "jsdom": "^26.1.0",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
+    "sass": "^1.89.2",
+    "sass-embedded": "^1.89.2",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "vite": "^5.4.19",
