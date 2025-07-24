@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A test project for MyTheresa using Fastify and Vite",
   "type": "module",
+  "homepage": "https://bjmendezsena.github.io/my-theresa-test",
   "scripts": {
     "dev:server": "tsx server.ts",
     "dev:client": "yarn build:client && vite --config vite.config.ts dev",
