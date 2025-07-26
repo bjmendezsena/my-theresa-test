@@ -9,7 +9,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "./src/client/styles/variables.scss" as *;`,
+        additionalData: `@use "./src/styles/variables.scss" as *;`,
         quietDeps: true,
       },
     },
@@ -20,8 +20,7 @@ export default defineConfig({
   optimizeDeps: {
     include: ["react", "react-dom", "react-router-dom"],
   },
-  base: process.env.NODE_ENV === "production" ? "/my-theresa-test/" : "/",
-  root: "src/client",
+  base: "/",
   publicDir: "public",
   define: {
     "process.env": {
