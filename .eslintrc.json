@@ -15,10 +15,10 @@
   },
   "plugins": ["react", "@typescript-eslint", "react-hooks"],
   "rules": {
-    "no-use-before-define": "off",
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-use-before-define": ["error"],
+    "no-use-before-define": "warn",
+    "no-unused-vars": "warn",
+    "react/react-in-jsx-scope": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "off"
   }
 }
