@@ -1,8 +1,29 @@
 .header {
   &__container {
     display: flex;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 60px;
+    z-index: $z-header;
+    background-color: $background-color;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: $spacing-4;
+    @include tablet-up {
+      padding: 0;
+    }
+  }
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    color: $white;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

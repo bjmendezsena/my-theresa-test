@@ -1,12 +1,20 @@
-import { Link } from "react-router-dom";
+import { useMemo } from 'react';
+import { useGetCategories, CategoryCarousel } from '@/features/categories';
 
 export const HomePage = () => {
+  const { data } = useGetCategories();
+
+  const { genres = [] } = data || {};
+
+  const threeGenres = useMemo(() => {
+    return genres.slice(0, 3);
+  }, [genres]);
+
   return (
     <div>
-      Home
-      <p>Welcome to the home page!</p>
-      <p>Explore our latest collections and offers.</p>
-      <Link to='/category'>Go to Category Page</Link>
+      {threeGenres.map(category => (
+        <CategoryCarousel key={category.id} category={category} />
+      ))}
     </div>
   );
 };

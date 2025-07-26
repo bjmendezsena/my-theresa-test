@@ -1,12 +1,12 @@
-import { PropsWithChildren } from "react";
-import { Footer, Header } from "@/components";
+import { PropsWithChildren } from 'react';
+import { Header } from '@/components';
+import './MainLayout.scss';
 
 export const MainLayout = ({ children }: PropsWithChildren) => {
   return (
-    <div className='app'>
+    <div className="app">
       <Header />
-      {children}
-      <Footer />
+      <div className="app__content">{children}</div>
     </div>
   );
 };

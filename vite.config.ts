@@ -16,9 +16,12 @@ export default defineConfig({
     postcss: {
       plugins: [postcssNesting()],
     },
+    devSourcemap: true,
   },
   optimizeDeps: {
     include: ["react", "react-dom", "react-router-dom"],
+    force: false,
+    entries: ["./src/entry-client.tsx", "./src/index.scss"],
   },
   base: "/",
   publicDir: "public",
@@ -29,8 +32,16 @@ export default defineConfig({
     },
   },
   plugins: [react(), tsconfigPaths()],
-  server: { port },
+  server: { port,  middlewareMode: false,
+    hmr: {
+      overlay: false, // Evitar overlays que pueden causar flashes
+    }, },
   build: {
     minify: process.env.NODE_ENV === "production" ? "esbuild" : false,
+    cssCodeSplit: process.env.NODE_ENV === "production",
+  },
+   ssr: {
+    // Optimizar las dependencias para SSR
+    noExternal: process.env.NODE_ENV === "development" ? [] : undefined,
   },
 });

@@ -335,5 +335,3 @@ async function startServer(): Promise<void> {
 if (import.meta.url === `file://${process.argv[1]}`) {
   startServer();
 }
-
-export { createServer, startServer };

@@ -1,3 +1,3 @@
-export * from "./CategoryPage";
+export * from "./MoviePage";
 export * from "./HomePage";
 export * from "./NotFoundPage";

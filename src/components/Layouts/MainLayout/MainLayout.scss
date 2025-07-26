@@ -1,0 +1,17 @@
+.app {
+  font-family: $font-primary;
+  color: $gray-900;
+  background-color: $background-color;
+  color: $text-color-primary;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: $spacing-4;
+  padding: 0;
+
+  @include tablet-up {
+    padding: $spacing-6;
+  }
+}

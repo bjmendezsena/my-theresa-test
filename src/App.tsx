@@ -1,12 +1,15 @@
-import { MainLayout } from "@/components";
-import { Router } from "@/routes";
-import "./index.scss";
+import { MainLayout } from '@/components';
+import { Router } from '@/routes';
+import { RootProvider } from '@/provider';
+import './index.scss';
 
 export const App = () => {
   return (
-    <MainLayout>
-      <Router />
-    </MainLayout>
+    <RootProvider>
+      <MainLayout>
+        <Router />
+      </MainLayout>
+    </RootProvider>
   );
 };
 
