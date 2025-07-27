@@ -1,0 +1,45 @@
+.movie-poster {
+  position: sticky;
+  top: $spacing-6;
+
+  @include mobile-only {
+    position: static;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-xl;
+    transition: transform $duration-300 $ease-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    @include mobile-only {
+      max-width: 250px;
+    }
+  }
+
+  &__placeholder {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background-color: $gray-800;
+    border-radius: $radius-lg;
+    @include flex-center;
+    box-shadow: $shadow-xl;
+
+    @include mobile-only {
+      max-width: 250px;
+    }
+  }
+
+  &__placeholder-text {
+    color: $gray-400;
+    font-weight: $font-medium;
+    font-size: $text-sm;
+  }
+}

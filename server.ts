@@ -162,17 +162,6 @@ function setupStaticAssets(app: Express): void {
   }
 }
 
-function setupHealthCheck(app: Express): void {
-  app.get('/health', (req: Request, res: Response) => {
-    res.status(200).json({
-      status: 'ok',
-      timestamp: new Date().toISOString(),
-      env: process.env.NODE_ENV,
-      uptime: process.uptime(),
-    });
-  });
-}
-
 function setupSSRHandler(app: Express, config: ServerConfig): void {
   app.use('*', async (req: Request, res: Response, next: NextFunction) => {
     const url = req.originalUrl;
@@ -271,8 +260,6 @@ async function createServer(): Promise<Express> {
     }
 
     setupStaticAssets(app);
-
-    setupHealthCheck(app);
 
     const [template, render] = await Promise.all([
       loadTemplate(),

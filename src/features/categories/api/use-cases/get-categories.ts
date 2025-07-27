@@ -1,6 +1,6 @@
 import { useQuery, queryOptions } from '@tanstack/react-query';
 import { QueryConfig, apiClient } from '@/lib';
-import { Category } from '@/features/categories';
+import { Category, MAX_CATEGORIES } from '@/features/categories';
 import { queryKeys } from '@/features/categories/api/api-utils';
 
 const url = '/genre/movie/list';
@@ -19,6 +19,12 @@ export const getCategoriesQueryOptions = (
   return queryOptions({
     queryFn: () => getCategories(),
     queryKey: queryKeys.allCategories(),
+    select: ({ genres = [] }) => {
+      const threeGenres = genres.slice(0, MAX_CATEGORIES) || [];
+      return {
+        genres: threeGenres,
+      };
+    },
     ...config,
   });
 };

@@ -1,0 +1,28 @@
+.movie-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $spacing-2;
+  margin-bottom: $spacing-6;
+  font-size: $text-sm;
+  color: $text-color-secondary;
+
+  @include mobile-only {
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__release-date,
+  &__runtime,
+  &__rating {
+    font-weight: $font-medium;
+  }
+
+  &__separator {
+    color: $gray-500;
+  }
+
+  &__rating {
+    color: $primary-400;
+  }
+}

@@ -1,0 +1,43 @@
+.wishlist-button {
+  @include button-primary;
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  font-size: $text-base;
+  padding: $spacing-3 $spacing-6;
+  border: none;
+  cursor: pointer;
+  transition: all $duration-200 $ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &--active {
+    background-color: $primary-500;
+    border-color: $primary-500;
+
+    &:hover:not(:disabled) {
+      background-color: $primary-600;
+      border-color: $primary-600;
+    }
+
+    .wishlist-button__icon {
+      color: $white;
+    }
+  }
+
+  &__icon {
+    font-size: $text-lg;
+    transition: transform $duration-200 $ease-in-out;
+
+    .wishlist-button:hover & {
+      transform: scale(1.2);
+    }
+  }
+}

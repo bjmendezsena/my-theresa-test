@@ -113,7 +113,6 @@ $z-header: 1080;
 // BORDERS & SHADOWS
 // ===========================
 
-// Border Radius
 $radius-none: 0;
 $radius-sm: 0.125rem;
 $radius-base: 0.25rem;
@@ -123,14 +122,12 @@ $radius-xl: 0.75rem;
 $radius-2xl: 1rem;
 $radius-full: 9999px;
 
-// Border Widths
 $border-0: 0;
 $border-1: 1px;
 $border-2: 2px;
 $border-4: 4px;
 $border-8: 8px;
 
-// Shadows
 $shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 $shadow-base:
   0 1px 3px 0 rgba(0, 0, 0, 0.1),
@@ -409,6 +406,20 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
 @mixin bounce-in($duration: $duration-500) {
   animation: bounceIn $duration $ease-out;
+}
+
+@mixin pulse($duration: $duration-1000, $color: $primary-500) {
+  animation: pulse $duration infinite;
+
+  @keyframes pulse {
+    0%,
+    100% {
+      box-shadow: 0 4px 12px rgba($color, 0.2);
+    }
+    50% {
+      box-shadow: 0 6px 20px rgba($color, 0.5);
+    }
+  }
 }
 
 // ===========================

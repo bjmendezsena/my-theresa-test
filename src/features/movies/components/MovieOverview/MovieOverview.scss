@@ -1,0 +1,24 @@
+.movie-overview {
+  margin-bottom: $spacing-8;
+
+  &__title {
+    font-size: $text-xl;
+    font-weight: $font-semibold;
+    color: $text-color-primary;
+    margin: 0 0 $spacing-4 0;
+    border-bottom: 2px solid $primary-600;
+    padding-bottom: $spacing-2;
+    display: inline-block;
+  }
+
+  &__description {
+    font-size: $text-base;
+    line-height: $leading-relaxed;
+    color: $text-color-secondary;
+    margin: 0;
+
+    @include mobile-only {
+      font-size: $text-sm;
+    }
+  }
+}

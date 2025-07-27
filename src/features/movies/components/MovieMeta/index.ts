@@ -1,0 +1,1 @@
+export { MovieMeta } from './MovieMeta';

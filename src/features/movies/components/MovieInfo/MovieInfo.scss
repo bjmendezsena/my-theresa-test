@@ -1,0 +1,12 @@
+.movie-info {
+  min-height: 0;
+
+  &__actions {
+    display: flex;
+    gap: $spacing-4;
+
+    @include mobile-only {
+      justify-content: center;
+    }
+  }
+}

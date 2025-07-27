@@ -1,0 +1,304 @@
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background-color: $gray-900;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: all $duration-300 $ease-out;
+  box-shadow: $shadow-md;
+  width: 100%;
+  height: 320px;
+  flex-shrink: 0;
+
+  &:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: $shadow-xl;
+    background-color: $gray-800;
+
+    .movie-card__poster-image {
+      transform: scale(1.05);
+    }
+
+    .movie-card__title {
+      color: $primary-400;
+    }
+  }
+
+  &:focus {
+    outline: 2px solid $primary-500;
+    outline-offset: 2px;
+  }
+
+  &__poster {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background-color: $gray-800;
+    flex-shrink: 0;
+  }
+
+  &__poster-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $duration-500 $ease-out;
+  }
+
+  &__rating {
+    position: absolute;
+    top: $spacing-2;
+    right: $spacing-2;
+    background-color: rgba($black, 0.8);
+    backdrop-filter: blur(4px);
+    padding: $spacing-1 $spacing-2;
+    border-radius: $radius-full;
+    display: flex;
+    align-items: center;
+    gap: $spacing-1;
+    font-size: $text-xs;
+    font-weight: $font-semibold;
+  }
+
+  &__rating-icon {
+    font-size: 10px;
+  }
+
+  &__rating-value {
+    color: $white;
+    line-height: 1;
+  }
+
+  // Wishlist Button
+  &__wishlist-btn {
+    position: absolute;
+    top: $spacing-2;
+    left: $spacing-2;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background-color: rgba($black, 0.7);
+    backdrop-filter: blur(4px);
+    border-radius: $radius-full;
+    cursor: pointer;
+    transition: all $duration-300 $ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.8);
+
+    &:hover {
+      background-color: rgba($black, 0.9);
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba($primary-500, 0.3);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &--active {
+      opacity: 1;
+      transform: scale(1);
+
+      .movie-card__wishlist-icon {
+        animation: heartBeat 0.6s ease-out;
+      }
+    }
+
+    @include mobile-only {
+      width: 32px;
+      height: 32px;
+      top: $spacing-1;
+      left: $spacing-1;
+    }
+  }
+
+  &__wishlist-icon {
+    font-size: 18px;
+    line-height: 1;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+
+    @include mobile-only {
+      font-size: 16px;
+    }
+  }
+
+  // Show wishlist button on hover or when active
+  &:hover &__wishlist-btn,
+  &__wishlist-btn--active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &__content {
+    padding: $spacing-2;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-1;
+    flex-grow: 1;
+    height: 120px;
+    overflow: hidden;
+
+    @include tablet-up {
+      padding: $spacing-3;
+      gap: $spacing-2;
+    }
+
+    @include desktop-up {
+      padding: $spacing-3;
+    }
+  }
+
+  &__title {
+    font-size: $text-sm;
+    font-weight: $font-semibold;
+    color: $white;
+    line-height: $leading-tight;
+    margin: 0;
+    transition: color $duration-200 $ease-out;
+    flex-shrink: 0;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 2.5em;
+  }
+
+  &__year {
+    font-size: $text-xs;
+    color: $gray-400;
+    font-weight: $font-medium;
+    margin: 0;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  &__overview {
+    font-size: $text-xs;
+    color: $gray-500;
+    line-height: $leading-tight;
+    margin: 0;
+    flex-grow: 1;
+    overflow: hidden;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 2.4em;
+  }
+
+  @include mobile-only {
+    &__poster {
+      height: 180px;
+    }
+
+    &__content {
+      height: 140px;
+      padding: $spacing-2;
+      gap: $spacing-1;
+    }
+
+    &__title {
+      font-size: $text-xs;
+      max-height: 2em;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+    }
+
+    &__year {
+      font-size: 10px;
+    }
+
+    &__overview {
+      display: none;
+    }
+  }
+
+  @include tablet-up {
+    &__poster {
+      height: 200px;
+    }
+
+    &__content {
+      height: 120px;
+      padding: $spacing-3;
+      gap: $spacing-2;
+    }
+
+    &__title {
+      font-size: $text-sm;
+    }
+
+    &__year {
+      font-size: $text-xs;
+    }
+  }
+
+  @include desktop-up {
+    &__content {
+      padding: $spacing-3;
+    }
+
+    &__title {
+      font-size: $text-sm;
+    }
+  }
+}
+
+.movie-card--loading {
+  .movie-card__poster {
+    background: linear-gradient(
+      90deg,
+      $gray-800 25%,
+      $gray-700 50%,
+      $gray-800 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .movie-card__title,
+  .movie-card__year {
+    background: linear-gradient(
+      90deg,
+      $gray-700 25%,
+      $gray-600 50%,
+      $gray-700 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: $radius-sm;
+    color: transparent;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes heartBeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.3);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+}

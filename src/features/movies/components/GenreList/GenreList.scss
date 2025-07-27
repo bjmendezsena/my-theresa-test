@@ -1,0 +1,33 @@
+.genre-list {
+  margin-bottom: $spacing-6;
+
+  &__title {
+    font-size: $text-xl;
+    font-weight: $font-semibold;
+    color: $text-color-primary;
+    margin: 0 0 $spacing-4 0;
+    border-bottom: 2px solid $primary-600;
+    padding-bottom: $spacing-2;
+    display: inline-block;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+  }
+
+  &__tag {
+    background-color: $primary-600;
+    color: $white;
+    padding: $spacing-1 $spacing-3;
+    border-radius: $radius-full;
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    transition: background-color $duration-200 $ease-in-out;
+
+    &:hover {
+      background-color: $primary-700;
+    }
+  }
+}
