@@ -1,7 +1,7 @@
 import './MovieMeta.scss';
 
 interface MovieMetaProps {
-  releaseDate: Date;
+  releaseDate: string;
   runtime?: number;
   voteAverage: number;
   className?: string;

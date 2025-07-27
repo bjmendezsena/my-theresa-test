@@ -2,7 +2,7 @@ export type WishlistItem = {
   id: number;
   title: string;
   posterPath: string;
-  releaseDate: Date;
+  releaseDate: string;
   overview: string;
   rating: number;
 };

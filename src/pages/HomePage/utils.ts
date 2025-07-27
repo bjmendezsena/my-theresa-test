@@ -19,21 +19,10 @@ export const prefetchHomeData: PrefetchFunction = async queryClient => {
     )
   );
 
-  const threeGenresData = genres.map(genre =>
+  genres.map(genre =>
     queryClient.getQueryData(
       discoverMoviesQueryOptions({ genres: [genre.id] }).queryKey
     )
-  );
-
-  queryClient.setQueryData(
-    getCategoriesQueryOptions().queryKey,
-    (oldData: any) => ({
-      ...oldData,
-      genres: genres.map((genre, index) => ({
-        ...genre,
-        movies: threeGenresData[index]?.results || [],
-      })),
-    })
   );
 
   return { queryData, queryClient };
