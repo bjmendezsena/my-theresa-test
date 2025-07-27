@@ -15,8 +15,7 @@
     "strict": true,
     "outDir": "dist",
     "paths": {
-      "@/*": ["src/*"],
-      "@/server-config": ["server-config/*"]
+      "@/*": ["src/*"]
     },
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -25,7 +24,12 @@
     "target": "ES2017",
     "types": ["vite/client"]
   },
-  "include": ["src/**/*", "server-config/*", "server.ts", "node_modules/vite/types/*"],
+  "include": [
+    "src/**/*",
+    "server-config/*",
+    "server.ts",
+    "node_modules/vite/types/*"
+  ],
   "ts-node": {
     "transpileOnly": true,
     "compilerOptions": {

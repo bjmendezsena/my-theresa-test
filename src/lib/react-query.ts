@@ -2,20 +2,8 @@ import {
   UseMutationOptions,
   DefaultOptions,
   QueryClient,
-  QueryKey,
   UseQueryOptions,
-  MutationCache,
 } from '@tanstack/react-query';
-
-declare module '@tanstack/react-query' {
-  interface Register {
-    mutationMeta: {
-      invalidatesQuery?: QueryKey;
-      successMessage?: string;
-      errorMessage?: string;
-    };
-  }
-}
 
 const queryConfig = {
   queries: {
@@ -24,6 +12,12 @@ const queryConfig = {
     staleTime: 1000 * 60,
   },
 } satisfies DefaultOptions;
+
+export function getQueryClient() {
+  return new QueryClient({
+    defaultOptions: queryConfig,
+  });
+}
 
 export const queryClient = new QueryClient({
   defaultOptions: queryConfig,

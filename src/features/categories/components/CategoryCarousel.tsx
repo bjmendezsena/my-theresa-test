@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Category } from '@/features/categories';
 import { useDiscoverMovies } from '@/features/movies';
+import { IMAGE_BASE_URL } from '@/features/movies';
 import './CategoryCarousel.scss';
-
-const imageW = 'w200';
-const imageBaseUrl = `https://image.tmdb.org/t/p/${imageW}/`;
 
 export interface CategoryCarouselProps {
   category: Category;
@@ -30,7 +28,7 @@ export const CategoryCarousel = ({ category }: CategoryCarouselProps) => {
             >
               <img
                 className="carousel__items__item__image"
-                src={`${imageBaseUrl}${movie.poster_path}`}
+                src={`${IMAGE_BASE_URL}${movie.poster_path}`}
                 alt={movie.title}
               />
               <div className="carousel__items__item__info">

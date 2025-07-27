@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, queryOptions } from '@tanstack/react-query';
 import { QueryConfig, apiClient } from '@/lib';
 import { Category } from '@/features/categories';
 import { queryKeys } from '@/features/categories/api/api-utils';
@@ -13,12 +13,18 @@ export const getCategories = () => {
   return apiClient.get<unknown, GetCategoriesResponse>(url);
 };
 
-export const useGetCategories = (
+export const getCategoriesQueryOptions = (
   config?: QueryConfig<typeof getCategories>
 ) => {
-  return useQuery({
+  return queryOptions({
     queryFn: () => getCategories(),
     queryKey: queryKeys.allCategories(),
     ...config,
   });
+};
+
+export const useGetCategories = (
+  config?: QueryConfig<typeof getCategories>
+) => {
+  return useQuery(getCategoriesQueryOptions(config));
 };

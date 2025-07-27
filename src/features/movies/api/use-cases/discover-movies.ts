@@ -1,13 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, queryOptions } from '@tanstack/react-query';
 import { QueryConfig, apiClient } from '@/lib';
-import { Movie, MoviesFilter } from '@/features/movies';
+import { MovieItem, MoviesFilter } from '@/features/movies';
 import { queryKeys } from '@/features/categories/api/api-utils';
 
 const url = '/discover/movie?with_genres=18';
 
 export type GetMoviesByCategoryResponse = {
   page: number;
-  results: Movie[];
+  results: MovieItem[];
   total_pages: number;
   total_results: number;
 };
@@ -25,13 +25,20 @@ type UseDiscoverMoviesParams = {
   config?: QueryConfig<typeof discoverMovies>;
 };
 
-export const useDiscoverMovies = ({
+export const discoverMoviesQueryOptions = ({
   genres = [],
   config,
 }: UseDiscoverMoviesParams = {}) => {
-  return useQuery({
+  return queryOptions({
     queryFn: () => discoverMovies({ genres }),
     queryKey: queryKeys.discoverMovies({ genres }),
     ...config,
   });
+};
+
+export const useDiscoverMovies = ({
+  genres = [],
+  config,
+}: UseDiscoverMoviesParams = {}) => {
+  return useQuery(discoverMoviesQueryOptions({ genres, config }));
 };

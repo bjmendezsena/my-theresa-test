@@ -2,6 +2,7 @@ import type { Request, Response, NextFunction, Express } from 'express';
 import fs from 'fs/promises';
 import path, { dirname } from 'path';
 import express from 'express';
+import { DehydratedState } from '@tanstack/react-query';
 import compression from 'compression';
 import serveStatic from 'serve-static';
 import { createServer as createViteServer, type ViteDevServer } from 'vite';
@@ -16,9 +17,13 @@ const HOST = process.env.HOST || '0.0.0.0';
 
 const resolve = (p: string): string => path.resolve(__dirname, p);
 
+type RenderFunctionReturn = {
+  appHtml: string;
+  dehydratedState?: DehydratedState;
+};
 interface ServerConfig {
   vite?: ViteDevServer;
-  render: (url: string) => Promise<string>;
+  render: (url: string) => Promise<RenderFunctionReturn>;
   template: string;
 }
 
@@ -48,7 +53,7 @@ async function loadTemplate(): Promise<string> {
 }
 
 async function loadProductionRenderer(): Promise<
-  (url: string) => Promise<string>
+  (url: string) => Promise<RenderFunctionReturn>
 > {
   const possiblePaths = [
     path.join(__dirname, './server/entry-server.js'),
@@ -76,7 +81,7 @@ async function loadProductionRenderer(): Promise<
 
 async function loadDevelopmentRenderer(
   vite: ViteDevServer
-): Promise<(url: string) => Promise<string>> {
+): Promise<(url: string) => Promise<RenderFunctionReturn>> {
   const devBuildPath = path.join(__dirname, './src/entry-server.tsx');
 
   try {
@@ -92,7 +97,7 @@ async function loadDevelopmentRenderer(
 
 async function loadRenderFunction(
   vite?: ViteDevServer
-): Promise<(url: string) => Promise<string>> {
+): Promise<(url: string) => Promise<RenderFunctionReturn>> {
   if (isProd) {
     return await loadProductionRenderer();
   } else {
@@ -180,9 +185,13 @@ function setupSSRHandler(app: Express, config: ServerConfig): void {
         template = await config.vite.transformIndexHtml(url, template);
       }
 
-      const appHtml = await config.render(url);
-
-      const html = template.replace('<!--app-html-->', appHtml);
+      const { appHtml, dehydratedState } = await config.render(url);
+      const html = template
+        .replace('<!--app-html-->', appHtml)
+        .replace(
+          '<!--dehydrated-state-->',
+          `<script>window.__REACT_QUERY_STATE__=${JSON.stringify(dehydratedState || {})}</script>`
+        );
 
       res.set({
         'Content-Type': 'text/html; charset=utf-8',

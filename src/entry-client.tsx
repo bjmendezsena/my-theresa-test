@@ -1,15 +1,27 @@
-import React from "react";
-import { createRoot, hydrateRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { App } from "@/App";
+import React from 'react';
+import { createRoot, hydrateRoot } from 'react-dom/client';
+import { QueryClientProvider, HydrationBoundary } from '@tanstack/react-query';
+import { BrowserRouter } from 'react-router-dom';
+import { getQueryClient } from '@/lib';
+import { App } from '@/App';
 
-const container = document.getElementById("app");
+declare global {
+  interface Window {
+    __REACT_QUERY_STATE__?: unknown;
+  }
+}
 
+const container = document.getElementById('app');
+const queryClient = getQueryClient();
 const FullApp = () => (
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <HydrationBoundary state={window.__REACT_QUERY_STATE__ || {}}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </HydrationBoundary>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
