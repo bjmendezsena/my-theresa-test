@@ -21,9 +21,12 @@ type RenderFunctionReturn = {
   appHtml: string;
   dehydratedState?: DehydratedState;
 };
+
+type RenderFunction = (url: string) => Promise<RenderFunctionReturn>;
+
 interface ServerConfig {
   vite?: ViteDevServer;
-  render: (url: string) => Promise<RenderFunctionReturn>;
+  render: RenderFunction;
   template: string;
 }
 
@@ -52,9 +55,7 @@ async function loadTemplate(): Promise<string> {
   }
 }
 
-async function loadProductionRenderer(): Promise<
-  (url: string) => Promise<RenderFunctionReturn>
-> {
+async function loadProductionRenderer(): Promise<RenderFunction> {
   const possiblePaths = [
     path.join(__dirname, './server/entry-server.js'),
     path.join(__dirname, './dist/server/entry-server.js'),
@@ -81,11 +82,12 @@ async function loadProductionRenderer(): Promise<
 
 async function loadDevelopmentRenderer(
   vite: ViteDevServer
-): Promise<(url: string) => Promise<RenderFunctionReturn>> {
+): Promise<RenderFunction> {
   const devBuildPath = path.join(__dirname, './src/entry-server.tsx');
 
   try {
     const serverModule = await vite.ssrLoadModule(devBuildPath);
+
     if (!serverModule.render) {
       throw new Error('render function not found in development module');
     }
@@ -97,7 +99,7 @@ async function loadDevelopmentRenderer(
 
 async function loadRenderFunction(
   vite?: ViteDevServer
-): Promise<(url: string) => Promise<RenderFunctionReturn>> {
+): Promise<RenderFunction> {
   if (isProd) {
     return await loadProductionRenderer();
   } else {

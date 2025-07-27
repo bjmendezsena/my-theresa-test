@@ -43,8 +43,13 @@ export const MoviePage = () => {
     ? `${IMAGE_BASE_URL}${movie.poster_path}`
     : undefined;
 
+  const { genres = [] } = movie || {};
+  const genreClasses = genres
+    .map(genre => `movie-page--${genre.name.toLowerCase()}`)
+    .join(' ');
+
   return (
-    <div className="movie-page">
+    <div className={`movie-page ${genreClasses}`}>
       <div className="movie-page__container">
         <Hero
           backgroundImage={backgroundImage}

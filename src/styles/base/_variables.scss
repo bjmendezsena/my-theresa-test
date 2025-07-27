@@ -35,6 +35,31 @@ $text-color-muted: $gray-500;
 $text-color-light: $gray-300;
 $background-color: $black;
 
+// Theme Colors
+$action-primary: #dc2626;
+$action-secondary: #991b1b;
+$action-accent: #f87171;
+$action-background: #7f1d1d;
+$action-surface: #1f2937;
+$action-text: #fef2f2;
+$action-text-secondary: #fca5a5;
+
+$adventure-primary: #059669;
+$adventure-secondary: #047857;
+$adventure-accent: #34d399;
+$adventure-background: #064e3b;
+$adventure-surface: #1f2937;
+$adventure-text: #f0fdf4;
+$adventure-text-secondary: #86efac;
+
+$animation-primary: #eab308;
+$animation-secondary: #ca8a04;
+$animation-accent: #fbbf24;
+$animation-background: #713f12;
+$animation-surface: #1f2937;
+$animation-text: #fffbeb;
+$animation-text-secondary: #fcd34d;
+
 $font-primary:
   -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 $font-secondary: 'Inter', sans-serif;
@@ -457,5 +482,396 @@ $ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
   > * {
     @include absolute-fill;
+  }
+}
+
+// ===========================
+// THEME ANIMATIONS
+// ===========================
+
+@keyframes pulse-action {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba($action-primary, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba($action-primary, 0);
+  }
+}
+
+@keyframes pulse-adventure {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba($adventure-primary, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba($adventure-primary, 0);
+  }
+}
+
+@keyframes pulse-animation {
+  0%,
+  100% {
+    transform: scale(1) rotate(2deg);
+    box-shadow: 0 0 0 0 rgba($animation-primary, 0.7);
+  }
+  50% {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 0 0 10px rgba($animation-primary, 0);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  53%,
+  80%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  40%,
+  43% {
+    transform: translate3d(0, -8px, 0) scale(1.1);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0) scale(1.05);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0) scale(1.02);
+  }
+}
+
+// ===========================
+// THEME MIXINS
+// ===========================
+
+@mixin action-theme {
+  background: linear-gradient(
+    135deg,
+    $action-background 0%,
+    $action-surface 100%
+  );
+  color: $action-text;
+  font-family: 'Arial Black', $font-primary;
+
+  // Wishlist button theme
+  .wishlist-button {
+    background-color: $action-primary;
+    border-color: $action-primary;
+    color: $white;
+    font-weight: $font-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    &:hover:not(:disabled) {
+      background-color: $action-secondary;
+      border-color: $action-secondary;
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 25px rgba($action-primary, 0.4);
+    }
+
+    &--active {
+      background-color: $action-accent;
+      border-color: $action-accent;
+      animation: pulse-action 2s infinite;
+
+      &:hover:not(:disabled) {
+        background-color: $action-primary;
+        border-color: $action-primary;
+      }
+    }
+  }
+
+  // Genre tags theme
+  .genre-list__tag {
+    background-color: $action-primary;
+    color: $white;
+    font-weight: $font-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 2px solid transparent;
+
+    &:hover {
+      background-color: $action-secondary;
+      border-color: $action-accent;
+      transform: scale(1.1);
+    }
+  }
+
+  .genre-list__title {
+    color: $action-text;
+    border-bottom-color: $action-primary;
+    font-weight: $font-black;
+    text-transform: uppercase;
+  }
+
+  // Movie card wishlist button theme
+  .movie-card__wishlist-btn {
+    background-color: $action-primary;
+    color: $white;
+
+    &:hover {
+      background-color: $action-secondary;
+      transform: scale(1.2);
+    }
+
+    &--active {
+      background-color: $action-accent;
+    }
+  }
+
+  // Text colors
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $action-text;
+    font-weight: $font-black;
+  }
+
+  p,
+  span,
+  div {
+    color: $action-text-secondary;
+  }
+
+  // Back button theme
+  .movie-page__back-link {
+    background-color: $action-primary;
+    border-color: $action-primary;
+    font-weight: $font-bold;
+
+    &:hover {
+      background-color: $action-secondary;
+      border-color: $action-secondary;
+    }
+  }
+}
+
+@mixin adventure-theme {
+  background: linear-gradient(
+    135deg,
+    $adventure-background 0%,
+    $adventure-surface 100%
+  );
+  color: $adventure-text;
+  font-family: 'Georgia', serif;
+
+  // Wishlist button theme
+  .wishlist-button {
+    background-color: $adventure-primary;
+    border-color: $adventure-primary;
+    color: $white;
+    font-weight: $font-semibold;
+    border-radius: $radius-xl;
+
+    &:hover:not(:disabled) {
+      background-color: $adventure-secondary;
+      border-color: $adventure-secondary;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba($adventure-primary, 0.3);
+    }
+
+    &--active {
+      background-color: $adventure-accent;
+      border-color: $adventure-accent;
+      animation: pulse-adventure 2s infinite;
+
+      &:hover:not(:disabled) {
+        background-color: $adventure-primary;
+        border-color: $adventure-primary;
+      }
+    }
+  }
+
+  // Genre tags theme
+  .genre-list__tag {
+    background-color: $adventure-primary;
+    color: $white;
+    font-weight: $font-semibold;
+    border-radius: $radius-xl;
+    border: 2px solid transparent;
+
+    &:hover {
+      background-color: $adventure-secondary;
+      border-color: $adventure-accent;
+      transform: translateY(-2px);
+    }
+  }
+
+  .genre-list__title {
+    color: $adventure-text;
+    border-bottom-color: $adventure-primary;
+    font-weight: $font-bold;
+    font-style: italic;
+  }
+
+  // Movie card wishlist button theme
+  .movie-card__wishlist-btn {
+    background-color: $adventure-primary;
+    color: $white;
+    border-radius: $radius-full;
+
+    &:hover {
+      background-color: $adventure-secondary;
+      transform: scale(1.15);
+    }
+
+    &--active {
+      background-color: $adventure-accent;
+    }
+  }
+
+  // Text colors
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $adventure-text;
+    font-weight: $font-bold;
+    font-style: italic;
+  }
+
+  p,
+  span,
+  div {
+    color: $adventure-text-secondary;
+  }
+
+  // Back button theme
+  .movie-page__back-link {
+    background-color: $adventure-primary;
+    border-color: $adventure-primary;
+    border-radius: $radius-xl;
+
+    &:hover {
+      background-color: $adventure-secondary;
+      border-color: $adventure-secondary;
+    }
+  }
+}
+
+@mixin animation-theme {
+  background: linear-gradient(
+    135deg,
+    $animation-background 0%,
+    $animation-surface 100%
+  );
+  color: $animation-text;
+  font-family: 'Comic Sans MS', cursive, $font-primary;
+
+  // Wishlist button theme
+  .wishlist-button {
+    background-color: $animation-primary;
+    border-color: $animation-primary;
+    color: $black;
+    font-weight: $font-bold;
+    border-radius: $radius-2xl;
+    transform: rotate(-1deg);
+
+    &:hover:not(:disabled) {
+      background-color: $animation-secondary;
+      border-color: $animation-secondary;
+      transform: rotate(1deg) translateY(-2px) scale(1.05);
+      box-shadow: 0 10px 25px rgba($animation-primary, 0.4);
+    }
+
+    &--active {
+      background-color: $animation-accent;
+      border-color: $animation-accent;
+      animation: pulse-animation 2s infinite;
+      transform: rotate(2deg);
+
+      &:hover:not(:disabled) {
+        background-color: $animation-primary;
+        border-color: $animation-primary;
+      }
+    }
+  }
+
+  // Genre tags theme
+  .genre-list__tag {
+    background-color: $animation-primary;
+    color: $black;
+    font-weight: $font-bold;
+    border-radius: $radius-2xl;
+    border: 3px solid $animation-accent;
+    transform: rotate(-1deg);
+
+    &:hover {
+      background-color: $animation-secondary;
+      transform: rotate(1deg) scale(1.1);
+      border-color: $animation-primary;
+    }
+
+    &:nth-child(odd) {
+      transform: rotate(1deg);
+    }
+  }
+
+  .genre-list__title {
+    color: $animation-text;
+    border-bottom-color: $animation-primary;
+    font-weight: $font-black;
+    transform: rotate(-0.5deg);
+  }
+
+  // Movie card wishlist button theme
+  .movie-card__wishlist-btn {
+    background-color: $animation-primary;
+    color: $black;
+    border-radius: $radius-full;
+    border: 2px solid $animation-accent;
+
+    &:hover {
+      background-color: $animation-secondary;
+      transform: scale(1.2) rotate(15deg);
+    }
+
+    &--active {
+      background-color: $animation-accent;
+      animation: bounce 1s infinite;
+    }
+  }
+
+  // Text colors
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $animation-text;
+    font-weight: $font-black;
+    text-shadow: 2px 2px 4px rgba($black, 0.3);
+  }
+
+  p,
+  span,
+  div {
+    color: $animation-text-secondary;
+  }
+
+  // Back button theme
+  .movie-page__back-link {
+    background-color: $animation-primary;
+    border-color: $animation-primary;
+    color: $black;
+    border-radius: $radius-2xl;
+    transform: rotate(-1deg);
+
+    &:hover {
+      background-color: $animation-secondary;
+      border-color: $animation-secondary;
+      transform: rotate(1deg);
+    }
   }
 }
