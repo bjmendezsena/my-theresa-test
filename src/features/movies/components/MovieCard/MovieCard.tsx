@@ -20,9 +20,9 @@ export const MovieCard = ({
   id,
   title,
   posterPath,
-  releaseDate,
-  voteAverage,
-  overview,
+  releaseDate = '',
+  voteAverage = 0,
+  overview = '',
   className = '',
   showWishlistButton = false,
 }: MovieCardProps) => {
@@ -48,9 +48,9 @@ export const MovieCard = ({
       id,
       title,
       posterPath,
-      releaseDate: releaseDate ? new Date(releaseDate) : new Date(),
-      overview: overview || '',
-      rating: voteAverage || 0,
+      releaseDate: releaseDate,
+      overview: overview,
+      rating: voteAverage,
     };
 
     toggleItem(wishlistItem);
