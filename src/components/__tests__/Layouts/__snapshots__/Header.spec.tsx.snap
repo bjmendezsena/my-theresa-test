@@ -1,0 +1,83 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Header/> > renders correctly 1`] = `
+<div>
+  <header
+    class="header"
+  >
+    <div
+      class="header__container"
+    >
+      <a
+        class="header__brand"
+        data-discover="true"
+        href="/"
+      >
+        <div
+          class="header__logo"
+        >
+          <div
+            class="header__logo-icon"
+          >
+            <span
+              class="header__logo-film"
+            >
+              🎬
+            </span>
+          </div>
+          <div
+            class="header__logo-text"
+          >
+            <span
+              class="header__logo-name"
+            >
+              CineScope
+            </span>
+            <span
+              class="header__logo-tagline"
+            >
+              Movie Discovery
+            </span>
+          </div>
+        </div>
+      </a>
+      <div
+        class="header__actions"
+      >
+        <a
+          class="header__wishlist-btn"
+          data-discover="true"
+          href="/whishlist"
+        >
+          <span
+            class="header__wishlist-icon"
+          >
+            <svg
+              aria-hidden="true"
+              class="lucide lucide-heart"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+              />
+            </svg>
+          </span>
+          <span
+            class="header__wishlist-count"
+          >
+            0
+          </span>
+        </a>
+      </div>
+    </div>
+  </header>
+</div>
+`;

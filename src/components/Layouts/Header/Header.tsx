@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useWishlist } from '@/features/wishlist';
-import './Header.scss';
 import { Heart } from 'lucide-react';
+import { useWishlist } from '@/store';
+import './Header.scss';
 
 export const Header = () => {
   const { items } = useWishlist();

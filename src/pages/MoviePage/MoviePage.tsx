@@ -1,12 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
-import {
-  useGetMovie,
-  Hero,
-  MoviePoster,
-  MovieInfo,
-  BackButton,
-  IMAGE_BASE_URL,
-} from '@/features/movies';
+import { IMAGE_BASE_URL } from '@/constants';
+import { useGetMovie } from '@/api';
+import { MoviePoster, MovieInfo, BackButton, Hero } from '@/components';
 import { prefetchMovieData } from './utils';
 import './MoviePage.scss';
 

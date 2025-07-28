@@ -1,4 +1,5 @@
-import { useGetCategories, CategoryCarousel } from '@/features/categories';
+import { useGetCategories } from '@/api';
+import { CategoryCarousel } from '@/components';
 import { prefetchHomeData } from './utils';
 
 export const HomePage = () => {

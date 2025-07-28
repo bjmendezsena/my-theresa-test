@@ -1,5 +1,5 @@
 import { PrefetchFunction } from '@/types';
-import { getMovieQueryOptions } from '@/features/movies';
+import { getMovieQueryOptions } from '@/api';
 
 export const prefetchMovieData: PrefetchFunction = async (
   queryClient,

@@ -1,6 +1,5 @@
 import { PrefetchFunction } from '@/types';
-import { getCategoriesQueryOptions } from '@/features/categories';
-import { discoverMoviesQueryOptions } from '@/features/movies';
+import { getCategoriesQueryOptions, discoverMoviesQueryOptions } from '@/api';
 
 export const prefetchHomeData: PrefetchFunction = async queryClient => {
   await queryClient.prefetchQuery(getCategoriesQueryOptions());

@@ -11,6 +11,7 @@ export default defineConfig(({ command }) => ({
       scss: {
         additionalData: `@use "./src/styles/variables.scss" as *;`,
         quietDeps: true,
+        silenceDeprecations: ['legacy-js-api'],
       },
     },
     postcss: {
@@ -36,7 +37,7 @@ export default defineConfig(({ command }) => ({
     port,
     middlewareMode: false,
     hmr: {
-      overlay: false, // Evitar overlays que pueden causar flashes
+      overlay: false,
     },
   },
   build: {
@@ -44,7 +45,6 @@ export default defineConfig(({ command }) => ({
     cssCodeSplit: process.env.NODE_ENV === 'production',
   },
   ssr: {
-    // Optimizar las dependencias para SSR
     noExternal: process.env.NODE_ENV === 'development' ? [] : undefined,
   },
 }));

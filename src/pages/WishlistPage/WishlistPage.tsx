@@ -1,4 +1,4 @@
-import { FavouriteMoviesGrid } from '@/features/wishlist';
+import { FavouriteMoviesGrid } from '@/components';
 
 export const WishlistPage = () => {
   return <FavouriteMoviesGrid />;
