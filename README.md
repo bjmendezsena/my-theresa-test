@@ -1,5 +1,8 @@
 # My Theresa Test - Movie Discovery App
 
+🔗 **Live Demo**:
+[https://my-theresa-test.onrender.com](https://my-theresa-test.onrender.com)
+
 A modern web application for discovering movies built with React, TypeScript,
 Vite, and Server-Side Rendering (SSR). This application delivers **SSR benefits
 without losing SPA functionality** thanks to TanStack Query's intelligent data
