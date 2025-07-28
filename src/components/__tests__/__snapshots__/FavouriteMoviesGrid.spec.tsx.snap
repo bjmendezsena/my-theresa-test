@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<FavouriteMoviesGrid/> > renders correctly when wishlist is empty 1`] = `
+<div>
+  <div
+    class="favourite-movies-grid"
+  >
+    <div
+      class="favourite-movies-grid__empty"
+    >
+      <div
+        class="favourite-movies-grid__empty-icon"
+      >
+        ❤️
+      </div>
+      <h3
+        class="favourite-movies-grid__empty-title"
+      >
+        No movies in your wishlist yet
+      </h3>
+      <p
+        class="favourite-movies-grid__empty-description"
+      >
+        Start adding movies to your wishlist to see them here!
+      </p>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,68 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<MovieCard/> > renders correctly 1`] = `
+<div>
+  <a
+    aria-label="View details for Test Movie"
+    class="movie-card "
+    data-discover="true"
+    href="/movie/1"
+  >
+    <div
+      class="movie-card__poster"
+    >
+      <img
+        alt="Test Movie poster"
+        class="movie-card__poster-image"
+        loading="lazy"
+        src="https://image.tmdb.org/t/p/w500/path/to/poster.jpg"
+      />
+      <div
+        class="movie-card__rating"
+      >
+        <span
+          class="movie-card__rating-icon"
+        >
+          ⭐
+        </span>
+        <span
+          class="movie-card__rating-value"
+        >
+          5.0
+        </span>
+      </div>
+      <button
+        aria-label="Add to wishlist"
+        class="movie-card__wishlist-btn "
+        title="Add to wishlist"
+      >
+        <span
+          class="movie-card__wishlist-icon"
+        >
+          🤍
+        </span>
+      </button>
+    </div>
+    <div
+      class="movie-card__content"
+    >
+      <h3
+        class="movie-card__title"
+        title="Test Movie"
+      >
+        Test Movie
+      </h3>
+      <p
+        class="movie-card__year"
+      >
+        2023
+      </p>
+      <p
+        class="movie-card__overview"
+      >
+        overview
+      </p>
+    </div>
+  </a>
+</div>
+`;

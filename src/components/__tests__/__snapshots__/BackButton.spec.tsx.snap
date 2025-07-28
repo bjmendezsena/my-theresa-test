@@ -1,0 +1,14 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<BackButton/> > renders correctly 1`] = `
+<div>
+  <a
+    class="back-button "
+    data-discover="true"
+    href="/"
+    role="button"
+  >
+    Go back
+  </a>
+</div>
+`;

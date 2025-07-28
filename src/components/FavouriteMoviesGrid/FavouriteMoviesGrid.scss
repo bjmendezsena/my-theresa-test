@@ -77,7 +77,7 @@
     }
 
     @include large-desktop-up {
-      grid-template-columns: repeat(4, 1fr); // Fixed 4 columns on large screens
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -174,16 +174,14 @@
   }
 }
 
-// Responsive grid adjustments
 @media (min-width: 1400px) {
   .favourite-movies-grid {
     &__grid {
-      grid-template-columns: repeat(5, 1fr); // 5 columns on very large screens
+      grid-template-columns: repeat(5, 1fr);
     }
   }
 }
 
-// Animation enhancements
 .favourite-movies-grid__item {
   animation: fadeInUp 0.6s ease-out backwards;
 

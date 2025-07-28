@@ -1,6 +1,6 @@
 import { createStore, useStore } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { WishlistItem } from '@/features/wishlist';
+import { WishlistItem } from '@/types';
 
 interface WishlistState {
   items: WishlistItem[];

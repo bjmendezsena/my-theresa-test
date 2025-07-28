@@ -1,4 +1,4 @@
-# Dependencias
+
 node_modules/
 .pnpm/
 npm-debug.log*
@@ -6,13 +6,13 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Archivos de build y distribución
+
 dist/
 .next/
 out/
 build/
 
-# Archivos de desarrollo
+
 .env.local
 .env.development.local
 .env.test.local
@@ -21,36 +21,36 @@ build/
 *.env
 *.log
 
-# Archivos del sistema
+
 .DS_Store
 Thumbs.db
 
-# IDEs y editores
+
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# Git y control de versiones
+
 .git/
 .gitignore
 
-# Cache y archivos temporales
+
 .cache/
 .parcel-cache/
 *.tmp
 *.temp
 
-# Archivos de Docker
+
 Dockerfile*
 docker-compose*
 .dockerignore
 
-# Testing y coverage
+
 coverage/
 .nyc_output/
 test-results/
 
-# Documentación y README (opcional)
+
 README.md
 *.md

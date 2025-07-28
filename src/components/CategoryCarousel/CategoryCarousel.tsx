@@ -19,7 +19,7 @@ export const CategoryCarousel = ({ category }: CategoryCarouselProps) => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const scrollAmount = 300; // Amount to scroll in pixels
+  const scrollAmount = 300;
 
   const updateScrollButtons = () => {
     if (!carouselRef.current) return;

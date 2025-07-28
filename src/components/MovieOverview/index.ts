@@ -1,1 +1,1 @@
-export { MovieOverview } from './MovieOverview';
+export * from './MovieOverview';

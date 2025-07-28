@@ -41,15 +41,15 @@ export const MovieCard = ({
   const isInWishlist = items.some(item => item.id === id);
 
   const handleWishlistClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault(); // Prevent navigation to movie detail
+    e.preventDefault();
     e.stopPropagation();
 
     const wishlistItem: WishlistItem = {
       id,
       title,
       posterPath,
-      releaseDate: releaseDate,
-      overview: overview,
+      releaseDate,
+      overview,
       rating: voteAverage,
     };
 

@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<CategoryCarousel/> > Renders correctly 1`] = `
+<div>
+  <div
+    class="category-carousel"
+  >
+    <h2
+      class="category-carousel__title"
+    >
+      Action
+    </h2>
+    <p
+      class="category-carousel__empty"
+    >
+      No movies found in this category.
+    </p>
+  </div>
+</div>
+`;

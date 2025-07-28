@@ -14,7 +14,7 @@ export const BackButton = ({
   className = '',
 }: BackButtonProps) => {
   return (
-    <Link to={to} className={`back-button ${className}`}>
+    <Link to={to} className={`back-button ${className}`} role="button">
       {children}
     </Link>
   );
