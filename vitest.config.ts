@@ -16,7 +16,7 @@ export default defineConfig(configEnv =>
       reporters: ['default'],
       coverage: {
         provider: 'v8',
-        reporter: ['text', 'text-summary', 'cobertura'],
+        reporter: ['text', 'text-summary', 'html'],
         exclude: [
           ...configDefaults.exclude,
           '**/tests/**/*.ts',
