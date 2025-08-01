@@ -1,5 +1,5 @@
 import { useGetCategories } from '@/api';
-import { CategoryCarousel } from '@/components';
+import { CategoryCarousel, ExampleComponent } from '@/components';
 import { prefetchHomeData } from './utils';
 
 export const HomePage = () => {
@@ -9,6 +9,7 @@ export const HomePage = () => {
 
   return (
     <div>
+      <ExampleComponent />
       {genres.map(category => (
         <CategoryCarousel key={category.id} category={category} />
       ))}

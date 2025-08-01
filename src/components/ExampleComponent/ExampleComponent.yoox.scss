@@ -1,0 +1,19 @@
+// Estilos específicos para YOOX
+.example-component--yoox {
+  border-color: #e74c3c;
+  background-color: #ffeaa7;
+
+  h2 {
+    color: #e74c3c;
+    font-style: italic;
+  }
+
+  .yoox-specific-feature {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 8px;
+    border-radius: 20px;
+    text-align: center;
+    font-style: italic;
+  }
+}

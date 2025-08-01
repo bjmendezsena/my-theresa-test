@@ -1,50 +1,61 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import postcssNesting from 'postcss-nesting';
+import {
+  siteBasedResolver,
+  createSiteConfig,
+} from './plugins/site-based-resolver';
 
-const port = Number(process.env.PORT) || 3000;
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  const siteId = env.SITE_ID;
+  const port = Number(env.PORT) || 3000;
 
-export default defineConfig(({ command }) => ({
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@use "./src/styles/variables.scss" as *;`,
-        quietDeps: true,
-        silenceDeprecations: ['legacy-js-api'],
+  const siteConfig = createSiteConfig(siteId);
+
+  return {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "./src/styles/variables.scss" as *;`,
+          quietDeps: true,
+          silenceDeprecations: ['legacy-js-api'],
+        },
+      },
+      postcss: {
+        plugins: [postcssNesting()],
+      },
+      devSourcemap: true,
+    },
+    optimizeDeps: {
+      include: ['react', 'react-dom', 'react-router-dom'],
+      force: false,
+      entries: ['./src/entry-client.tsx', './src/index.scss'],
+    },
+    base: '/',
+    publicDir: 'public',
+    define: {
+      'process.env': {
+        NODE_ENV: JSON.stringify(env.NODE_ENV || 'development'),
+        PORT: JSON.stringify(env.PORT || '3000'),
+        SITE_ID: JSON.stringify(siteId || ''),
       },
     },
-    postcss: {
-      plugins: [postcssNesting()],
+    plugins: [siteBasedResolver(siteConfig), react(), tsconfigPaths()],
+    server: {
+      port,
+      middlewareMode: false,
+      hmr: {
+        overlay: false,
+      },
     },
-    devSourcemap: true,
-  },
-  optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom'],
-    force: false,
-    entries: ['./src/entry-client.tsx', './src/index.scss'],
-  },
-  base: '/',
-  publicDir: 'public',
-  define: {
-    'process.env': {
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-      PORT: JSON.stringify(process.env.PORT || '3000'),
+    build: {
+      minify: env.NODE_ENV === 'production' ? ('esbuild' as const) : false,
+      cssCodeSplit: env.NODE_ENV === 'production',
     },
-  },
-  plugins: [react(), tsconfigPaths()],
-  server: {
-    port,
-    middlewareMode: false,
-    hmr: {
-      overlay: false,
+    ssr: {
+      noExternal: env.NODE_ENV === 'development' ? [] : undefined,
     },
-  },
-  build: {
-    minify: process.env.NODE_ENV === 'production' ? 'esbuild' : false,
-    cssCodeSplit: process.env.NODE_ENV === 'production',
-  },
-  ssr: {
-    noExternal: process.env.NODE_ENV === 'development' ? [] : undefined,
-  },
-}));
+  };
+});

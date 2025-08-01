@@ -1,6 +1,7 @@
 export * from './BackButton';
 export * from './CategoryCarousel';
 export * from './ErrorFallback';
+export * from './ExampleComponent';
 export * from './FavouriteMoviesGrid';
 export * from './GenreList';
 export * from './Hero';
